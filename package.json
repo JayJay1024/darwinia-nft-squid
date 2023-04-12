@@ -9,7 +9,9 @@
     "update": "npx npm-check-updates --filter /subsquid/ --upgrade && npm i -f",
     "db:migrate": "npx squid-typeorm-migration apply",
     "processor:start": "node lib/processor.js",
-    "query-node:start": "squid-graphql-server --subscriptions --max-response-size 10000 --dumb-cache in-memory --dumb-cache-ttl 1000 --dumb-cache-size 100 --dumb-cache-max-age 1000"
+    "query-node:start": "squid-graphql-server --subscriptions --max-response-size 10000 --dumb-cache in-memory --dumb-cache-ttl 1000 --dumb-cache-size 100 --dumb-cache-max-age 1000",
+    "dev:local": "sqd codegen && sqd down && sqd up && sqd migration:clean && sqd build && sqd migration:generate && sqd typegen && sqd process",
+    "dev:serve": "sqd serve"
   },
   "dependencies": {
     "@subsquid/archive-registry": "2.1.12",

@@ -1,17 +1,10 @@
-type Account @entity {
-  "Account address"
+type ClaimRemark @entity {
   id: ID!
-  transfersTo: [Transfer!] @derivedFrom(field: "to")
-  transfersFrom: [Transfer!] @derivedFrom(field: "from")
-}
-
-type Transfer @entity {
-  id: ID!
+  signer: String! @index # contributor
+  value: String! # remark content
+  addressValue: String! # target address that receive nft
   blockNumber: Int! @index
-  timestamp: DateTime! @index
-  extrinsicHash: String @index
-  from: Account!
-  to: Account!
-  amount: BigInt! @index
-  fee: BigInt! # fee is calculated at the best effort and may be zero for some old extrinsics
+  extrinsicIndex: Int!
+  extrinsicHash: String!
+  extrinsicTimestamp: DateTime!
 }
